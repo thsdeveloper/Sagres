@@ -11,8 +11,8 @@
       </div>
     </div>
     <el-table :data="notes" style="width: 100%" border>
-      <el-table-column prop="student_id" label="Aluno"></el-table-column>
-      <el-table-column prop="discipline_id" label="Disciplina"></el-table-column>
+      <el-table-column prop="student.nome" label="Aluno"></el-table-column>
+      <el-table-column prop="discipline.nome" label="Disciplina"></el-table-column>
       <el-table-column prop="note" label="Nota aplicada">
         <template slot-scope="scope">
           <el-rate
@@ -110,7 +110,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.loading = true;
-          axios.post('/insert/note', {
+          axios.post('/public/insert/note', {
             student_id: this.ruleForm.student_id,
             discipline_id: this.ruleForm.discipline_id,
             note: this.ruleForm.note,

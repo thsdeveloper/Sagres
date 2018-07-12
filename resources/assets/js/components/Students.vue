@@ -189,7 +189,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.loading = true;
-          axios.post('/insert/studant', {
+          axios.post('/public/insert/studant', {
             nome: this.ruleForm.nome,
             matricula: this.ruleForm.matricula,
             endereco: this.ruleForm.endereco,

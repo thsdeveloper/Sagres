@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     $disciplines = Discipline::get();
 
-    $notes = Note::get();
+    $notes = Note::with('student', 'discipline')->get();
 
     return view('home', compact('students', 'disciplines', 'notes'));
   }

@@ -12603,7 +12603,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$refs[formName].validate(function (valid) {
         if (valid) {
           _this.loading = true;
-          axios.post('/insert/studant', {
+          axios.post('/public/insert/studant', {
             nome: _this.ruleForm.nome,
             matricula: _this.ruleForm.matricula,
             endereco: _this.ruleForm.endereco,
@@ -70457,7 +70457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$refs[formName].validate(function (valid) {
         if (valid) {
           _this.loading = true;
-          axios.post('/insert/note', {
+          axios.post('/public/insert/note', {
             student_id: _this.ruleForm.student_id,
             discipline_id: _this.ruleForm.discipline_id,
             note: _this.ruleForm.note
@@ -70549,11 +70549,11 @@ var render = function() {
         },
         [
           _c("el-table-column", {
-            attrs: { prop: "student_id", label: "Aluno" }
+            attrs: { prop: "student.nome", label: "Aluno" }
           }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { prop: "discipline_id", label: "Disciplina" }
+            attrs: { prop: "discipline.nome", label: "Disciplina" }
           }),
           _vm._v(" "),
           _c("el-table-column", {
