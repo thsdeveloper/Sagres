@@ -28,9 +28,14 @@ class HomeController extends Controller
   */
   public function index()
   {
-    $students = Student::get();
+    $students = Student::with('note.discipline')->get();
+
+    // dd($students);
+
     $disciplines = Discipline::get();
+
     $notes = Note::get();
+
     return view('home', compact('students', 'disciplines', 'notes'));
   }
 }

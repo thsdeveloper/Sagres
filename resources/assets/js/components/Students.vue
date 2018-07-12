@@ -11,13 +11,17 @@
       </div>
     </div>
     <el-table :data="students" style="width: 100%" border>
+
       <el-table-column prop="matricula" label="Matrícula" width="90"></el-table-column>
       <el-table-column prop="nome" label="Nome do aluno"></el-table-column>
       <el-table-column prop="email" label="E-Mail"></el-table-column>
       <el-table-column prop="cidade" label="Cidade"></el-table-column>
-      <el-table-column label="Ver notas">
-        <template slot-scope="scope">
-          <el-button size="mini" type="primary"  class="btn-notas" round @click="handleEdit(scope.$index, scope.row)" icon="el-icon-document">Visualizar nota</el-button>
+      <el-table-column type="expand" label="Ver notas" width="100">
+        <template slot-scope="props">
+          <el-table :data="props.row.note" border>
+            <el-table-column prop="discipline.nome" label="Disciplina"></el-table-column>
+            <el-table-column prop="note" label="Nota"></el-table-column>
+          </el-table>
         </template>
       </el-table-column>
     </el-table>
@@ -112,6 +116,10 @@
       </el-form>
     </el-dialog>
 
+    <el-dialog title="Notas do Aluno: " :visible.sync="dialogNotas" width="30%">
+
+    </el-dialog>
+
 
   </div>
 </template>
@@ -173,6 +181,7 @@ export default {
         data: {},
       },
       dialogVisible: false,
+      dialogNotas: false,
     }
   },
   methods: {
@@ -205,8 +214,6 @@ export default {
               message: error
             });
           });
-
-
         } else {
           console.log('error submit!!');
           return false;
@@ -215,6 +222,9 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    verNota(index, row){
+      this.dialogNotas = true;
     }
   },
   created(){
